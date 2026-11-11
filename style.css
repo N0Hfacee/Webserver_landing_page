@@ -1,0 +1,283 @@
+/* ===== Token ===== */
+:root {
+    --white: #ffffff;
+    --paper: #faf7f7;       /* putih sedikit hangat untuk section selang-seling */
+    --red: #d3202b;         /* aksen utama */
+    --red-deep: #a8141e;    /* hover / teks merah di atas putih */
+    --ink: #1c1517;         /* teks utama */
+    --muted: #5d5154;       /* teks sekunder */
+    --line: #eadfe0;
+
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+
+    --wrap: 1080px;
+}
+
+/* ===== Reset ringan ===== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--white);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    line-height: 1.1;
+    margin: 0 0 0.5em;
+    letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4.25rem); font-weight: 800; }
+h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 700; }
+
+p { margin: 0 0 1em; max-width: 60ch; }
+
+a { color: inherit; }
+
+:focus-visible {
+    outline: 3px solid var(--red);
+    outline-offset: 3px;
+}
+
+/* ===== Layout umum ===== */
+.hero,
+.about,
+.program,
+.achievements,
+.signup,
+.footer {
+    padding-inline: max(1.5rem, calc((100% - var(--wrap)) / 2));
+}
+
+.about,
+.program,
+.achievements { padding-block: 5rem; }
+
+.program { background: var(--paper); }
+
+.section-intro { color: var(--muted); margin-bottom: 2.5rem; }
+
+/* ===== Topbar ===== */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem max(1.5rem, calc((100% - var(--wrap)) / 2));
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+}
+
+.brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: var(--red);
+}
+
+.topbar nav { display: flex; align-items: center; gap: 1.5rem; }
+
+.topbar nav a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.topbar nav a:hover { color: var(--red); }
+
+.topbar .nav-cta {
+    background: var(--red);
+    color: var(--white);
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+}
+
+.topbar .nav-cta:hover { background: var(--red-deep); color: var(--white); }
+
+/* ===== Tombol ===== */
+.btn {
+    display: inline-block;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-primary { background: var(--red); color: var(--white); }
+.btn-primary:hover { background: var(--red-deep); }
+
+.btn-ghost { border-color: var(--ink); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--red); color: var(--red); }
+
+.btn-light { background: var(--white); color: var(--red-deep); }
+.btn-light:hover { background: var(--ink); color: var(--white); }
+
+/* ===== Hero ===== */
+.hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 3rem;
+    padding-block: 5rem 6rem;
+}
+
+.hero-text p { font-size: 1.2rem; color: var(--muted); margin-bottom: 2rem; }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* Tiga lingkaran beririsan: Tri Mitra = unggul, kreatif, berprestasi */
+.venn {
+    position: relative;
+    width: 340px;
+    height: 340px;
+    justify-self: center;
+}
+
+.circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid var(--red);
+    background: rgba(211, 32, 43, 0.12);
+}
+
+.c1 { left: 70px; top: 0; }
+.c2 { left: 0; top: 120px; }
+.c3 { left: 140px; top: 120px; }
+
+.label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.l1 { left: 170px; top: 52px; }
+.l2 { left: 62px;  top: 262px; }
+.l3 { left: 278px; top: 262px; }
+
+.core {
+    left: 170px;
+    top: 182px;
+    font-size: 0.95rem;
+    line-height: 1.1;
+    color: var(--red-deep);
+}
+
+/* ===== Tentang ===== */
+.about h2 { max-width: 20ch; margin-bottom: 2.5rem; }
+
+.values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.values article { border-top: 3px solid var(--red); padding-top: 1.25rem; }
+.values p { color: var(--muted); margin: 0; }
+
+/* ===== Program ===== */
+.program-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+}
+
+.program-list li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.program-list h3 { margin: 0; }
+.program-list p { margin: 0; color: var(--muted); }
+
+/* ===== Prestasi ===== */
+.achievement-list {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2.5rem;
+}
+
+.achievement-list li {
+    padding: 1.1rem 0 1.1rem 1.25rem;
+    border-left: 3px solid var(--red);
+}
+
+.achievement-list strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--red-deep);
+}
+
+/* ===== CTA daftar ===== */
+.signup {
+    background: var(--red);
+    color: var(--white);
+    padding-block: 5rem;
+}
+
+.signup h2 { max-width: 18ch; }
+.signup p { margin-bottom: 1.75rem; opacity: 0.92; }
+
+/* ===== Footer ===== */
+.footer {
+    padding-block: 2.5rem;
+    background: var(--ink);
+    color: #d9cfd1;
+    font-size: 0.95rem;
+}
+
+.footer p { margin: 0 0 0.4rem; }
+.footer-name { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: var(--white); }
+.copy { margin-top: 1rem; opacity: 0.7; }
+
+/* ===== Responsif ===== */
+@media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-block: 3rem 4rem; }
+    .values { grid-template-columns: 1fr; gap: 2rem; }
+    .program-list li { grid-template-columns: 1fr; gap: 0.5rem; }
+    .achievement-list { grid-template-columns: 1fr; }
+    .about, .program, .achievements, .signup { padding-block: 3.5rem; }
+}
+
+@media (max-width: 560px) {
+    .topbar nav a:not(.nav-cta) { display: none; }
+    .venn { transform: scale(0.88); transform-origin: top center; margin-bottom: -40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+}
